@@ -1,0 +1,15 @@
+# Tooling / scaffolding de skills (não faz parte do site)
+.agents/
+.claude/
+skills-lock.json
+
+# Dependências
+node_modules/
+
+# Sistema operacional / editores
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+*.log
+.vscode/
