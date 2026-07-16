@@ -161,7 +161,7 @@
 
   /* ---------- Reveal on scroll (com stagger em sequência) ---------- */
   const revealEls = document.querySelectorAll(
-    ".segment, .solution-card, .post, .stat"
+    ".segment, .solution-card, .post, .stat, .pricing-card"
   );
   if ("IntersectionObserver" in window && !reduceMotion) {
     // atraso menor em telas pequenas para a sequência não "arrastar"
@@ -178,14 +178,66 @@
     });
     const io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = "1";
-          entry.target.style.transform = "none";
-          io.unobserve(entry.target);
-          setTimeout(function () { entry.target.style.willChange = "auto"; }, 800);
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        el.style.opacity = "1";
+        el.style.transform = "none";
+        io.unobserve(el);
+        setTimeout(function () { el.style.willChange = "auto"; }, 800);
+
+        // Ícone das soluções gira feito moeda ao chegar na seção.
+        // A classe é temporária: removida ao fim, deixa o hover livre para girar de novo.
+        if (el.classList.contains("solution-card")) {
+          el.classList.add("coin");
+          const d = parseInt(el.style.getPropertyValue("--reveal-delay"), 10) || 0;
+          setTimeout(function () { el.classList.remove("coin"); }, d + 1000);
         }
       });
     }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
     revealEls.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- Contagem dos números do "Sobre nós" (0 → valor final) ---------- */
+  const nums = document.querySelectorAll(".stat__num");
+  if (nums.length && "IntersectionObserver" in window && !reduceMotion) {
+    // Separa prefixo/número/sufixo: "+400", "R$ +20M", "20K"…
+    const parseNum = function (text) {
+      const m = text.trim().match(/^(\D*?)(\d[\d.,]*)(\D*)$/);
+      if (!m) return null;
+      return {
+        prefix: m[1],
+        value: parseInt(m[2].replace(/[.,]/g, ""), 10),
+        suffix: m[3]
+      };
+    };
+    const easeOut = function (t) { return 1 - Math.pow(1 - t, 3); };
+    const store = new Map();
+
+    nums.forEach(function (el) {
+      const data = parseNum(el.textContent);
+      if (!data) return;
+      store.set(el, data);
+      el.textContent = data.prefix + "0" + data.suffix; // parte do zero
+    });
+
+    const numIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const data = store.get(el);
+        numIO.unobserve(el);
+        if (!data) return;
+
+        const duration = 1500; // ms
+        const t0 = performance.now();
+        (function frame(now) {
+          const p = Math.min((now - t0) / duration, 1);
+          el.textContent = data.prefix + Math.round(easeOut(p) * data.value) + data.suffix;
+          if (p < 1) requestAnimationFrame(frame);
+        })(t0);
+      });
+    }, { threshold: 0.5 });
+
+    nums.forEach(function (el) { if (store.has(el)) numIO.observe(el); });
   }
 })();

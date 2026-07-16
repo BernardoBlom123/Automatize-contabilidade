@@ -9,6 +9,7 @@
 :root {
   --purple:   #6C2EF3;
   --purple-600:#5a1fe0;
+  --purple-dark:#431D97;         /* roxo escuro — painel "Sobre nós" */
   --navy:     #190F59;
   --bg:       #FFFFFF;
   --bg-soft:  #F6F6F6;
@@ -90,6 +91,11 @@ button { font-family: inherit; font-weight: 300; cursor: pointer; }
 .btn--outline:hover { border-color: var(--ink); }
 .btn--ghost { background: transparent; color: var(--ink-soft); border-color: var(--line-strong); }
 .btn--ghost:hover { border-color: var(--ink); color: var(--ink); }
+
+/* Botão apagado — acende quando o formulário fica válido */
+.btn:disabled { cursor: not-allowed; opacity: .38; }
+.btn--primary:disabled { background: var(--gray); }
+.btn--primary:disabled:hover { background: var(--gray); }
 
 /* ============================================================
    HEADER / NAV
@@ -208,6 +214,9 @@ button { font-family: inherit; font-weight: 300; cursor: pointer; }
    SEGMENTOS
    ============================================================ */
 .segments { background: var(--bg-soft); }
+/* Segmentos e "Sobre nós" dividem o mesmo fundo: colapsa a emenda
+   entre as duas para não somar dois paddings de seção. */
+.segments { padding-bottom: clamp(26px, 3.5vw, 40px); }
 .segments__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .segment {
   display: flex; align-items: center; gap: 14px;
@@ -229,11 +238,11 @@ button { font-family: inherit; font-weight: 300; cursor: pointer; }
 /* ============================================================
    SOBRE NÓS (Quem somos)
    ============================================================ */
-.about { background: var(--bg-soft); }
+.about { background: var(--bg-soft); padding-top: clamp(26px, 3.5vw, 40px); }
 .about__inner { display: grid; grid-template-columns: 0.85fr 2.15fr; gap: 20px; align-items: stretch; }
 
 .about__aside {
-  background: var(--purple); color: #fff;
+  background: var(--purple-dark); color: #fff;
   border-radius: var(--radius-lg); padding: 44px 40px;
   display: flex; flex-direction: column; justify-content: space-between; gap: 40px;
 }
@@ -250,7 +259,11 @@ button { font-family: inherit; font-weight: 300; cursor: pointer; }
   transition: border-color .2s ease;
 }
 .stat:hover { border-color: var(--line-strong); }
-.stat__num { font-size: clamp(1.9rem, 2.6vw, 2.5rem); font-weight: 300; color: var(--purple); line-height: 1; letter-spacing: -0.02em; }
+.stat__num {
+  font-size: clamp(1.9rem, 2.6vw, 2.5rem); font-weight: 300; color: var(--purple);
+  line-height: 1; letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums; /* dígitos de largura fixa: não "tremem" na contagem */
+}
 .stat__desc { margin-top: 16px; color: var(--ink-soft); font-size: .92rem; line-height: 1.55; }
 .stat__label {
   margin-top: auto; padding-top: 20px;
@@ -286,16 +299,71 @@ button { font-family: inherit; font-weight: 300; cursor: pointer; }
    ============================================================ */
 .solutions__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
 .solution-card {
+  position: relative; display: flex; flex-direction: column;
   background: #fff; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
-  padding: 42px 38px; transition: background .2s ease;
+  padding: 40px 36px; transition: background .2s ease;
+  perspective: 800px; /* dá profundidade ao giro do ícone */
 }
 .solution-card:hover { background: var(--bg-soft); }
-.solution-card__num {
-  font-size: .82rem; color: var(--purple); letter-spacing: .12em;
-  display: block; margin-bottom: 20px;
+
+/* Ícone com giro de moeda.
+   Usa animation (e não transition) para poder disparar tanto na entrada
+   da seção quanto no hover, sem que um estado atrapalhe o outro. */
+.solution-card__ico {
+  width: 52px; height: 52px; border-radius: 14px; margin-bottom: 22px;
+  display: grid; place-items: center;
+  background: rgba(108,46,243,.08); color: var(--purple);
+  transform-style: preserve-3d; backface-visibility: visible;
+  transition: background .35s ease, color .35s ease;
 }
+.solution-card__ico svg { width: 24px; height: 24px; }
+
+@keyframes coin-spin { from { transform: rotateY(0); } to { transform: rotateY(360deg); } }
+
+/* 1) Gira ao chegar na seção — classe temporária aplicada pelo JS,
+      com o mesmo atraso escalonado do reveal (gira em sequência). */
+.solution-card.coin .solution-card__ico {
+  animation: coin-spin .9s cubic-bezier(.34, .8, .28, 1) var(--reveal-delay, 0ms);
+}
+
+/* 2) Gira de novo no hover/foco */
+.solution-card:hover .solution-card__ico,
+.solution-card:focus-within .solution-card__ico {
+  animation: coin-spin .75s cubic-bezier(.34, .8, .28, 1);
+  background: var(--purple); color: #fff;
+}
+
+.solution-card__num {
+  position: absolute; top: 34px; right: 34px;
+  font-size: .8rem; color: var(--gray); letter-spacing: .12em;
+  transition: color .2s ease;
+}
+.solution-card:hover .solution-card__num { color: var(--purple); }
+
 .solution-card h3 { font-size: 1.22rem; font-weight: 300; margin-bottom: 12px; }
 .solution-card p { color: var(--ink-soft); font-size: .95rem; }
+
+/* Botão por solução */
+.solution-card__btn {
+  margin-top: 26px; align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 20px; border-radius: 999px;
+  border: 1px solid var(--line-strong); background: #fff;
+  font-size: .88rem; color: var(--ink);
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.solution-card__btn svg { width: 15px; height: 15px; transition: transform .2s ease; }
+.solution-card:hover .solution-card__btn { background: var(--purple); border-color: var(--purple); color: #fff; }
+.solution-card:hover .solution-card__btn svg { transform: translateX(4px); }
+.solution-card__btn:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  .solution-card.coin .solution-card__ico,
+  .solution-card:hover .solution-card__ico,
+  .solution-card:focus-within .solution-card__ico { animation: none; }
+  .solution-card:hover .solution-card__btn svg { transform: none; }
+}
 .solution-card--cta {
   background: var(--navy); color: #fff;
   display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 8px;
@@ -413,6 +481,169 @@ button { font-family: inherit; font-weight: 300; cursor: pointer; }
 .cookie__actions { display: flex; gap: 10px; flex: 0 0 auto; }
 
 /* ============================================================
+   PÁGINA DE SOLUÇÃO + WIZARD (formulário em etapas)
+   ============================================================ */
+.sol-hero { padding: clamp(52px, 6vw, 76px) 0 clamp(44px, 5vw, 60px); border-bottom: 1px solid var(--line); }
+.sol-hero__inner { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(36px, 5vw, 64px); align-items: center; }
+.sol-hero__ico {
+  width: 60px; height: 60px; border-radius: 16px; margin-bottom: 22px;
+  display: grid; place-items: center;
+  background: rgba(108,46,243,.08); color: var(--purple);
+  animation: coin-in .9s cubic-bezier(.34, .8, .28, 1) .1s both;
+}
+.sol-hero__ico svg { width: 28px; height: 28px; }
+@keyframes coin-in {
+  from { transform: rotateY(-180deg); opacity: 0; }
+  to   { transform: rotateY(0); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .sol-hero__ico { animation: none; } }
+.sol-hero__num { font-size: .82rem; letter-spacing: .12em; color: var(--purple); display: block; margin-bottom: 14px; }
+.sol-hero__title { font-size: clamp(2.1rem, 4.2vw, 3.2rem); font-weight: 300; }
+.sol-hero__lead { margin-top: 22px; font-size: 1.12rem; color: var(--ink-soft); }
+.sol-hero__actions { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 12px; }
+.sol-hero__list { display: grid; gap: 14px; }
+.sol-hero__list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px 20px; font-size: .96rem;
+}
+.sol-hero__list svg { width: 18px; height: 18px; flex: 0 0 auto; color: var(--purple); margin-top: 3px; }
+
+/* --- Wizard --- */
+.wizard { background: var(--purple-dark); color: #fff; }
+.wizard__inner { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(36px, 5vw, 72px); align-items: center; }
+.wizard__text { margin-top: 20px; color: rgba(255,255,255,.75); font-size: 1.04rem; max-width: 420px; }
+.wizard__chip {
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 28px;
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.24);
+  border-radius: 999px; padding: 10px 18px; font-size: .9rem;
+}
+.wizard__chip svg { width: 16px; height: 16px; color: #fff; }
+
+.wizard__card {
+  background: #fff; color: var(--ink);
+  border-radius: var(--radius-lg); padding: 36px 34px;
+  box-shadow: 0 30px 70px rgba(25,15,89,.22);
+}
+
+/* progresso */
+.wizard__progress { margin-bottom: 28px; }
+.wizard__bar { height: 3px; background: var(--line); border-radius: 999px; overflow: hidden; }
+.wizard__bar span {
+  display: block; height: 100%; width: 33.33%;
+  background: var(--purple); border-radius: 999px;
+  transition: width .35s ease;
+}
+.wizard__count { display: block; margin-top: 12px; font-size: .8rem; color: var(--ink-soft); }
+.wizard__count b { font-weight: 300; color: var(--purple); }
+
+/* etapas */
+.wizard__step { display: none; border: 0; padding: 0; margin: 0; min-width: 0; }
+.wizard__step.is-active { display: block; animation: wizard-in .28s ease; }
+@keyframes wizard-in { from { opacity: 0; transform: translateX(8px); } to { opacity: 1; transform: none; } }
+.wizard__legend { font-size: 1.24rem; font-weight: 300; margin-bottom: 6px; padding: 0; }
+.wizard__hint { font-size: .88rem; color: var(--ink-soft); margin-bottom: 22px; }
+
+/* opções (radio como cartão) */
+.opts { display: grid; gap: 10px; }
+.opt { position: relative; display: block; cursor: pointer; }
+.opt input { position: absolute; opacity: 0; pointer-events: none; }
+.opt span {
+  display: flex; align-items: center; gap: 12px;
+  border: 1px solid var(--line-strong); border-radius: 10px;
+  padding: 15px 16px; font-size: .95rem;
+  transition: border-color .16s ease, background .16s ease;
+}
+.opt span::before {
+  content: ""; flex: 0 0 auto; width: 16px; height: 16px; border-radius: 50%;
+  border: 1.5px solid var(--line-strong); transition: border-color .16s ease, box-shadow .16s ease;
+}
+.opt:hover span { border-color: var(--purple); }
+.opt input:checked + span { border-color: var(--purple); background: rgba(108,46,243,.05); }
+.opt input:checked + span::before { border-color: var(--purple); box-shadow: inset 0 0 0 4px var(--purple); }
+.opt input:focus-visible + span { box-shadow: 0 0 0 3px rgba(108,46,243,.18); }
+
+/* ações */
+.wizard__actions { display: flex; gap: 10px; margin-top: 28px; }
+.wizard__actions .btn { flex: 1; }
+
+/* resumo final */
+.wizard__done { text-align: center; padding: 8px 0; }
+.wizard__done-ico {
+  width: 52px; height: 52px; margin: 0 auto 18px; border-radius: 50%;
+  display: grid; place-items: center; background: rgba(108,46,243,.1); color: var(--purple);
+}
+.wizard__done-ico svg { width: 24px; height: 24px; }
+.wizard__done h3 { font-size: 1.4rem; font-weight: 300; }
+.wizard__done p { color: var(--ink-soft); margin-top: 10px; font-size: .95rem; }
+.wizard__summary {
+  text-align: left; margin-top: 24px; border: 1px solid var(--line);
+  border-radius: 12px; padding: 20px 22px; display: grid; gap: 12px;
+}
+.wizard__summary div { display: flex; justify-content: space-between; gap: 16px; font-size: .9rem; }
+.wizard__summary dt { color: var(--ink-soft); }
+.wizard__summary dd { margin: 0; text-align: right; }
+.wizard__summary .is-solution dd { color: var(--purple); }
+
+/* ============================================================
+   PÁGINA DE PLANOS (pricing)
+   ============================================================ */
+.pricing { background: var(--bg-soft); }
+.pricing__head { max-width: 680px; }
+.pricing__lead { margin-top: 20px; font-size: 1.1rem; color: var(--ink-soft); }
+
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+
+.pricing-card {
+  display: flex; flex-direction: column;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: var(--radius-lg); padding: 38px 34px;
+  transition: border-color .18s ease;
+}
+.pricing-card:hover { border-color: var(--line-strong); }
+.pricing-card__head { position: relative; }
+.pricing-card__name { font-size: 1.16rem; font-weight: 300; }
+.pricing-card__limit { margin-top: 10px; font-size: .95rem; color: var(--ink-soft); }
+.pricing-card__limit strong { font-weight: 300; color: var(--ink); }
+
+.pricing-card__price {
+  margin: 30px 0; padding-top: 26px; border-top: 1px solid var(--line);
+  display: flex; align-items: baseline; gap: 2px; flex-wrap: wrap;
+  font-variant-numeric: tabular-nums; color: var(--purple);
+}
+.pricing-card__cur { font-size: 1.1rem; margin-right: 4px; }
+.pricing-card__val { font-size: clamp(2.1rem, 3vw, 2.7rem); line-height: 1; letter-spacing: -0.03em; }
+.pricing-card__dec { font-size: 1.1rem; }
+.pricing-card__per { font-size: .95rem; color: var(--ink-soft); margin-left: 6px; }
+
+.pricing-card__foot { margin-top: auto; }
+
+/* Card em destaque */
+.pricing-card--featured { background: var(--purple); border-color: var(--purple); color: #fff; }
+.pricing-card--featured:hover { border-color: var(--purple); }
+.pricing-card--featured .pricing-card__limit { color: rgba(255,255,255,.8); }
+.pricing-card--featured .pricing-card__limit strong { color: #fff; }
+.pricing-card--featured .pricing-card__price { color: #fff; border-top-color: rgba(255,255,255,.28); }
+.pricing-card--featured .pricing-card__per { color: rgba(255,255,255,.8); }
+/* Selo "Mais vendido": estrela + texto, sem caixa */
+.pricing-card__badge {
+  position: absolute; top: 1px; right: 0;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: .8rem; color: rgba(255,255,255,.9);
+  white-space: nowrap;
+}
+.pricing-card__badge svg { width: 14px; height: 14px; flex: 0 0 auto; }
+
+.pricing__note { margin-top: 40px; color: var(--ink-soft); font-size: 1.02rem; }
+
+/* Incluído em todos os planos */
+.included__inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 5vw, 72px); align-items: center; }
+.included__text { margin-top: 20px; color: var(--ink-soft); font-size: 1.04rem; max-width: 460px; }
+.included__list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 20px; }
+.included__list li { display: flex; align-items: center; gap: 12px; font-size: .98rem; }
+.included__list svg { width: 18px; height: 18px; flex: 0 0 auto; color: var(--purple); }
+
+/* ============================================================
    PÁGINA DE ARTIGO (publicações)
    ============================================================ */
 .article-hero { padding: 68px 0 46px; border-bottom: 1px solid var(--line); }
@@ -496,6 +727,10 @@ button { font-family: inherit; font-weight: 300; cursor: pointer; }
   .hero__vector { margin-right: 0; width: 100%; max-width: 440px; }
   .hero__subtitle, .contact__text, .materials__copy p { max-width: 560px; }
   .contact__inner { grid-template-columns: 1fr; gap: clamp(32px, 6vw, 44px); }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 460px; }
+  .included__inner { grid-template-columns: 1fr; }
+  .sol-hero__inner { grid-template-columns: 1fr; }
+  .wizard__inner { grid-template-columns: 1fr; }
   .about__grid { grid-template-columns: repeat(2, 1fr); }
   .about__aside { flex-direction: column; align-items: flex-start; gap: 28px; }
   .materials__inner { grid-template-columns: 1fr; gap: clamp(32px, 6vw, 48px); }
@@ -519,6 +754,10 @@ button { font-family: inherit; font-weight: 300; cursor: pointer; }
   .field-row { grid-template-columns: 1fr; }
 
   .contact__card { padding: 26px; }
+  .wizard__card { padding: 26px 22px; }
+  .wizard__actions { flex-direction: column-reverse; }
+  .pricing-card { padding: 32px 28px; }
+  .included__list { grid-template-columns: 1fr; }
   .solution-card { padding: 32px 26px; }
   .stat { padding: 26px 24px; }
   .about__aside { padding: 36px 30px; }

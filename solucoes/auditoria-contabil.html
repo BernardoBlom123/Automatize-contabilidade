@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auditoria Contábil — Automatize Contabilidade</title>
+  <meta name="description" content="Auditoria contábil com a Automatize: revisão técnica das suas informações e rotinas contábeis." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/svg+xml" href="../assets/logo-cont-01.svg" />
+  <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="../index.html" class="header__brand" aria-label="Automatize Contabilidade — início">
+        <img src="../assets/logo-cont-01.svg" alt="Automatize Contabilidade" class="header__logo" />
+      </a>
+
+      <nav class="nav" id="primary-nav" aria-label="Navegação principal">
+        <ul class="nav__list">
+          <li><a href="../index.html" class="nav__link">Home</a></li>
+          <li><a href="../index.html#quem-somos" class="nav__link">Quem Somos</a></li>
+          <li class="nav__item nav__item--has-menu">
+            <button class="nav__link nav__trigger" aria-expanded="false" aria-controls="menu-solucoes">
+              Soluções
+              <svg class="nav__caret" width="11" height="11" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="nav__dropdown" id="menu-solucoes" role="menu">
+              <a href="abertura-de-empresa.html" role="menuitem">Abertura de Empresa</a>
+              <a href="contabilidade-consultiva.html" role="menuitem">Contabilidade Consultiva</a>
+              <a href="gestao-de-folha-de-pagamento.html" role="menuitem">Gestão de Folha de Pagamento</a>
+              <a href="gestao-financeira.html" role="menuitem">Gestão Financeira</a>
+              <a href="consultoria-tributaria.html" role="menuitem">Consultoria Tributária</a>
+              <a href="auditoria-contabil.html" role="menuitem" aria-current="page">Auditoria Contábil</a>
+            </div>
+          </li>
+          <li><a href="../planos.html" class="nav__link">Planos</a></li>
+          <li><a href="../index.html#publicacoes" class="nav__link">Publicações</a></li>
+          <li><a href="../index.html#contato" class="nav__link">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a href="#orcamento" class="btn btn--primary btn--sm">Orçamento</a>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== HERO DA SOLUÇÃO ===================== -->
+    <section class="sol-hero">
+      <div class="container sol-hero__inner">
+        <div>
+          <nav class="breadcrumb" aria-label="Trilha">
+            <a href="../index.html">Home</a><span>·</span>
+            <a href="../index.html#solucoes">Soluções</a><span>·</span>
+            Auditoria Contábil
+          </nav>
+          <span class="sol-hero__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 11 2 2 4-4"/><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+          <span class="sol-hero__num">Solução 06</span>
+          <h1 class="sol-hero__title">Auditoria Contábil</h1>
+          <p class="sol-hero__lead">Uma análise técnica e independente das suas informações contábeis, conduzida por especialistas — para dar mais confiança às suas demonstrações e apoiar decisões com dados precisos.</p>
+          <div class="sol-hero__actions">
+            <a href="#orcamento" class="btn btn--primary">Pedir orçamento</a>
+            <a href="../planos.html" class="btn btn--outline">Ver planos</a>
+          </div>
+        </div>
+
+        <ul class="sol-hero__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Revisão técnica conduzida por especialistas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Mais confiança nas suas demonstrações contábeis</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Apoio à tomada de decisão com dados precisos</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== WIZARD ===================== -->
+    <section class="wizard section" id="orcamento">
+      <div class="container wizard__inner">
+        <div class="wizard__copy">
+          <span class="eyebrow eyebrow--light">Orçamento</span>
+          <h2 class="section__title section__title--light">Vamos entender o seu caso</h2>
+          <p class="wizard__text">
+            Três etapas curtas. Ao final, um especialista da Automatize entra em contato
+            com uma proposta feita para a sua realidade.
+          </p>
+          <span class="wizard__chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Solução: <strong>Auditoria Contábil</strong>
+          </span>
+        </div>
+
+        <div class="wizard__card">
+          <form id="wizard" data-solution="Auditoria Contábil" novalidate>
+            <div class="wizard__progress">
+              <div class="wizard__bar"><span></span></div>
+              <span class="wizard__count">Etapa <b data-wizard="current">1</b> de <span data-wizard="total">3</span></span>
+            </div>
+
+            <!-- Etapa 1 — específica da solução -->
+            <fieldset class="wizard__step is-active" data-step="1">
+              <legend class="wizard__legend">Qual é a sua necessidade?</legend>
+              <p class="wizard__hint">Escolha a opção que mais se aproxima do seu caso.</p>
+              <div class="opts">
+              <label class="opt"><input type="radio" name="necessidade" value="Auditoria das demonstrações contábeis" required /><span>Auditoria das demonstrações contábeis</span></label>
+              <label class="opt"><input type="radio" name="necessidade" value="Revisão de rotinas e processos contábeis" /><span>Revisão de rotinas e processos contábeis</span></label>
+              <label class="opt"><input type="radio" name="necessidade" value="Auditoria por exigência de terceiros (banco, investidor, sócio)" /><span>Auditoria por exigência de terceiros (banco, investidor, sócio)</span></label>
+              <label class="opt"><input type="radio" name="necessidade" value="Ainda estou avaliando" /><span>Ainda estou avaliando</span></label>
+              </div>
+            </fieldset>
+
+            <!-- Etapa 2 — momento e porte -->
+            <fieldset class="wizard__step" data-step="2">
+              <legend class="wizard__legend">Sobre a sua empresa</legend>
+              <p class="wizard__hint">Isso nos ajuda a dimensionar a proposta.</p>
+              <div class="opts">
+                <label class="opt"><input type="radio" name="momento" value="Ainda não tenho CNPJ" required /><span>Ainda não tenho CNPJ</span></label>
+                <label class="opt"><input type="radio" name="momento" value="Já tenho CNPJ" /><span>Já tenho CNPJ</span></label>
+              </div>
+              <label class="field" style="margin-top:18px">
+                <span class="field__label">Faturamento mensal</span>
+                <select name="faturamento" required>
+                  <option value="" disabled selected>Selecione uma opção</option>
+                  <option>Ainda não faturo</option>
+                  <option>Até R$ 25.000</option>
+                  <option>De R$ 25.000 a R$ 50.000</option>
+                  <option>De R$ 50.000 a R$ 150.000</option>
+                  <option>Acima de R$ 150.000</option>
+                </select>
+              </label>
+            </fieldset>
+
+            <!-- Etapa 3 — dados de contato -->
+            <fieldset class="wizard__step" data-step="3">
+              <legend class="wizard__legend">Seus dados</legend>
+              <p class="wizard__hint">Só para conseguirmos retornar com a proposta.</p>
+              <label class="field">
+                <span class="field__label">Nome completo</span>
+                <input type="text" name="nome" required placeholder="Seu nome" autocomplete="name" />
+              </label>
+              <div class="field-row">
+                <label class="field">
+                  <span class="field__label">E-mail</span>
+                  <input type="email" name="email" required placeholder="voce@empresa.com" autocomplete="email" />
+                </label>
+                <label class="field">
+                  <span class="field__label">WhatsApp</span>
+                  <input type="tel" name="telefone" required placeholder="(21) 99999-9999" autocomplete="tel" />
+                </label>
+              </div>
+              <label class="checkbox">
+                <input type="checkbox" name="aceite" required />
+                <span>Li e aceito a Política de Privacidade.</span>
+              </label>
+            </fieldset>
+
+            <!-- Resumo final -->
+            <div class="wizard__done" hidden>
+              <div class="wizard__done-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <h3>Pedido enviado!</h3>
+              <p>Um especialista da Automatize entra em contato em breve. Veja o que recebemos:</p>
+              <dl class="wizard__summary"></dl>
+            </div>
+
+            <div class="wizard__actions">
+              <button type="button" class="btn btn--ghost" data-wizard="back" hidden>Voltar</button>
+              <button type="button" class="btn btn--primary" data-wizard="next">Continuar</button>
+              <button type="submit" class="btn btn--primary" data-wizard="send" hidden>Enviar pedido</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== OUTRAS SOLUÇÕES ===================== -->
+    <section class="solutions section">
+      <div class="container">
+        <header class="section__head">
+          <span class="eyebrow">Continue explorando</span>
+          <h2 class="section__title">Outras soluções</h2>
+        </header>
+        <div class="solutions__grid">
+          <article class="solution-card">
+            <span class="solution-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></span>
+            <span class="solution-card__num">01</span>
+            <h3>Abertura de Empresa</h3>
+            <p>Com nossos especialistas sua empresa estará aberta em poucos dias, de maneira fácil, sem burocracia, sem gastar seu tempo e sem dor de cabeça.</p>
+            <a href="abertura-de-empresa.html" class="solution-card__btn">Conhecer solução <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </article>
+          <article class="solution-card">
+            <span class="solution-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></span>
+            <span class="solution-card__num">02</span>
+            <h3>Contabilidade Consultiva</h3>
+            <p>Na Automatize o especialista torna-se um parceiro consultivo enquanto nossa ampla estrutura digital é capaz de gerar dados estratégicos, processos com…</p>
+            <a href="contabilidade-consultiva.html" class="solution-card__btn">Conhecer solução <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </article>
+          <article class="solution-card">
+            <span class="solution-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <span class="solution-card__num">03</span>
+            <h3>Gestão de Folha de Pagamento</h3>
+            <p>A Automatize tem as soluções ideais, que atendem às suas obrigações trabalhistas, governamentais e sindicais com gestão focada em minimização de risco…</p>
+            <a href="gestao-de-folha-de-pagamento.html" class="solution-card__btn">Conhecer solução <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </article>
+          <article class="solution-card">
+            <span class="solution-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg></span>
+            <span class="solution-card__num">04</span>
+            <h3>Gestão Financeira</h3>
+            <p>Dedique-se ao desafio de empreender com mais segurança, tempo e liberdade enquanto cuidamos da burocracia financeira para você.</p>
+            <a href="gestao-financeira.html" class="solution-card__btn">Conhecer solução <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </article>
+          <article class="solution-card">
+            <span class="solution-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>
+            <span class="solution-card__num">05</span>
+            <h3>Consultoria Tributária</h3>
+            <p>Milhares de empresas poderiam ter melhor saúde financeira com uma consultoria tributária mais assertiva. Na Automatize esse processo é conduzido por p…</p>
+            <a href="consultoria-tributaria.html" class="solution-card__btn">Conhecer solução <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="../assets/logo-cont-03.svg" alt="Automatize Contabilidade" class="footer__logo" />
+        <p class="footer__slogan">Inteligência e automação contábil</p>
+        <div class="footer__social">
+          <a href="https://instagram.com/automatize_contabilidade">Instagram</a>
+          <a href="https://facebook.com/contabilidadeautomatize">Facebook</a>
+          <a href="https://www.linkedin.com/company/automatize-assessoria">LinkedIn</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Soluções</h4>
+        <ul>
+          <li><a href="abertura-de-empresa.html">Abertura de Empresa</a></li>
+          <li><a href="contabilidade-consultiva.html">Contabilidade Consultiva</a></li>
+          <li><a href="gestao-de-folha-de-pagamento.html">Gestão de Folha de Pagamento</a></li>
+          <li><a href="gestao-financeira.html">Gestão Financeira</a></li>
+          <li><a href="consultoria-tributaria.html">Consultoria Tributária</a></li>
+          <li><a href="auditoria-contabil.html">Auditoria Contábil</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contato</h4>
+        <ul class="footer__contact">
+          <li><a href="tel:+5521966289134">+55 (21) 96628-9134</a></li>
+          <li><a href="tel:+552139006203">+55 (21) 3900-6203</a></li>
+          <li><a href="mailto:contato@automatizecontabilidade.com.br">contato@automatizecontabilidade.com.br</a></li>
+          <li><a href="https://wa.me/5521966289134">WhatsApp</a></li>
+        </ul>
+      </div>
+      <div class="footer__col footer__col--wide">
+        <h4>Onde estamos</h4>
+        <ul class="footer__address">
+          <li><strong>Matriz · Rio de Janeiro</strong><br />Rua da Alfândega, 100, 4º andar — Centro · CEP 20070-004</li>
+          <li><strong>Filial · São Paulo</strong><br />Av. das Nações Unidas, 11.541, 18º andar — Morumbi · CEP 04578-000</li>
+          <li><strong>Filial · Santa Catarina</strong><br />Av. Hercílio Luz, 639, 11º andar — Centro, Florianópolis · CEP 88020-000</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <span>© 2021 Automatize — Todos os Direitos Reservados. Desenvolvido por ThinkD Marketing Digital.</span>
+        <span class="footer__badge">Proteção de Dados · LGPD</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../scripts/main.js"></script>
+  <script src="../scripts/wizard.js"></script>
+</body>
+</html>
