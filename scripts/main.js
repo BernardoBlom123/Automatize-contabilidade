@@ -10,13 +10,16 @@
   if (title && !reduceMotion) {
     const full = title.textContent.trim();
     title.setAttribute("aria-label", full);
-    // Reserva a altura atual para evitar reflow enquanto o texto é digitado
-    title.style.minHeight = title.offsetHeight + "px";
 
-    title.textContent = "";
-    const typed = document.createElement("span");
-    typed.className = "hero__caret"; // cursor via border-right (não quebra linha)
-    title.append(typed);
+    // O texto final fica no DOM como "fantasma" invisível: ele reserva a altura
+    // exata em qualquer largura/fonte. O texto digitado é sobreposto a ele.
+    // Sem medição por JS = sem vão sobrando nem salto de layout.
+    title.innerHTML =
+      '<span class="hero__ghost" aria-hidden="true"></span>' +
+      '<span class="hero__typed"><span class="hero__ink hero__caret"></span></span>';
+    title.querySelector(".hero__ghost").textContent = full;
+
+    const typed = title.querySelector(".hero__ink");
     title.classList.add("is-typing");
 
     let i = 0;
@@ -25,7 +28,7 @@
       typed.textContent = full.slice(0, i);
       if (i < full.length) {
         i++;
-        // pequena pausa extra após espaços/pontuação, deixa mais natural
+        // pequena pausa extra após pontuação, deixa mais natural
         const ch = full.charAt(i - 1);
         setTimeout(step, ch === "." || ch === "," ? speed * 5 : speed);
       } else {

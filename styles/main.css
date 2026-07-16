@@ -160,7 +160,15 @@ button { font-family: inherit; font-weight: 300; cursor: pointer; }
 .hero__inner {
   display: grid; grid-template-columns: 1fr 1.35fr; gap: 40px; align-items: center;
 }
-.hero__title { font-size: clamp(2.6rem, 5.6vw, 4.2rem); font-weight: 300; line-height: 1.08; }
+.hero__title {
+  display: grid; /* empilha fantasma e texto digitado na MESMA célula */
+  font-size: clamp(2.6rem, 5.6vw, 4.2rem); font-weight: 300; line-height: 1.08;
+}
+/* "fantasma": o texto final, invisível, reserva a altura exata em qualquer
+   largura ou fonte — sem depender de medição por JS.
+   Como os dois dividem a célula, a altura é sempre a do maior: nunca transborda. */
+.hero__ghost, .hero__typed { grid-area: 1 / 1; }
+.hero__ghost { visibility: hidden; }
 .hero__caret {
   border-right: 3px solid var(--purple);
   padding-right: 6px;
@@ -371,6 +379,36 @@ button { font-family: inherit; font-weight: 300; cursor: pointer; }
 .solution-card--cta:hover { background: var(--navy); }
 .solution-card--cta h3 { color: #fff; }
 .solution-card--cta p { color: rgba(255,255,255,.68); margin-bottom: 20px; }
+
+/* ============================================================
+   FAIXA IMAGÉTICA (showcase)
+   ============================================================ */
+.showcase {
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: clamp(440px, 48vw, 600px);
+  display: grid; align-items: center;
+  padding-block: clamp(48px, 6vw, 80px);
+}
+/* imagem cobrindo todo o fundo, nas cores originais */
+.showcase__media { position: absolute; inset: 0; z-index: -1; }
+.showcase__media img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+/* véu bem leve: só integra a foto à paleta, sem apagá-la */
+.showcase__media::after {
+  content: ""; position: absolute; inset: 0;
+  background: rgba(25, 15, 89, .15);
+}
+
+/* Painel sólido — o texto nunca depende da foto para ter contraste */
+.showcase__panel {
+  max-width: 460px;
+  background: var(--purple); color: #fff;
+  border-radius: var(--radius-lg);
+  padding: clamp(30px, 3.4vw, 46px);
+  box-shadow: 0 30px 70px rgba(25, 15, 89, .3);
+}
+.showcase__panel .eyebrow { color: #fff; opacity: .8; }
+.showcase__title { font-size: clamp(1.6rem, 2.6vw, 2.2rem); font-weight: 200; }
+.showcase__text { margin: 18px 0 30px; font-size: 1rem; color: rgba(255,255,255,.85); }
 
 /* ============================================================
    BLOG
@@ -720,10 +758,31 @@ button { font-family: inherit; font-weight: 300; cursor: pointer; }
     max-height: 0; overflow: hidden; transition: max-height .25s ease;
   }
   .nav__dropdown.is-open { max-height: 400px; }
-  .nav__toggle { display: flex; }
 
-  .hero__inner { grid-template-columns: 1fr; gap: clamp(30px, 6vw, 40px); }
-  .hero__visual { order: -1; justify-content: center; }
+  /* Header no mobile: só a marca e o sanduíche, um em cada ponta.
+     A .nav vira fixed (painel do menu) e sai do fluxo, então o
+     margin-left:auto dela deixa de empurrar — daí o space-between. */
+  .header__inner { justify-content: space-between; gap: 12px; }
+  .header__actions .btn { display: none; } /* CTA sai do header — já há "Contato" no menu */
+  .nav__toggle { display: flex; margin-right: -10px; } /* alinha o traço à margem óptica */
+
+  /* Hero no mobile — respiro no topo, convidando a rolar */
+  .hero { padding-top: clamp(56px, 9vw, 76px); }
+
+  /* Ordem: texto → imagem → benefícios → botões.
+     display:contents dissolve o .hero__copy para que os filhos
+     participem do mesmo flex e possam ser reordenados. */
+  /* align-items:stretch anula o 'center' do desktop — em coluna ele
+     centralizaria na horizontal, encolhendo cada item ao seu conteúdo. */
+  .hero__inner { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+  .hero__copy { display: contents; }
+  .hero__copy > .eyebrow { order: 1; margin-bottom: 14px; }
+  .hero__title      { order: 2; }
+  .hero__subtitle   { order: 3; margin-top: 14px; }
+  .hero__visual     { order: 4; margin-top: 30px; justify-content: center; }
+  .hero__highlights { order: 5; margin-top: 30px; }
+  .hero__actions    { order: 6; margin-top: 26px; }
+
   .hero__vector { margin-right: 0; width: 100%; max-width: 440px; }
   .hero__subtitle, .contact__text, .materials__copy p { max-width: 560px; }
   .contact__inner { grid-template-columns: 1fr; gap: clamp(32px, 6vw, 44px); }
@@ -754,6 +813,18 @@ button { font-family: inherit; font-weight: 300; cursor: pointer; }
   .field-row { grid-template-columns: 1fr; }
 
   .contact__card { padding: 26px; }
+
+  /* Showcase no mobile: em vez de sobrepor, vira dois cards empilhados —
+     foto em cima, painel de texto embaixo. */
+  .showcase { min-height: 0; }
+  .showcase__media {
+    position: static; margin-bottom: 14px;
+    border-radius: var(--radius-lg); overflow: hidden;
+    aspect-ratio: 3 / 2;
+  }
+  .showcase__media::after { display: none; } /* sem véu: a foto não é mais fundo */
+  .showcase__panel { max-width: none; box-shadow: none; }
+
   .wizard__card { padding: 26px 22px; }
   .wizard__actions { flex-direction: column-reverse; }
   .pricing-card { padding: 32px 28px; }
