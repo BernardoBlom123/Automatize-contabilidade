@@ -72,6 +72,34 @@
     });
   }
 
+  /* ---------- Mega menu: troca de categoria ---------- */
+  const mega = document.getElementById("menu-solucoes");
+  if (mega) {
+    const cats = mega.querySelectorAll(".mega__cat");
+    const panels = mega.querySelectorAll(".mega__panel");
+
+    const showCat = function (nome) {
+      cats.forEach(function (c) {
+        const ativo = c.dataset.cat === nome;
+        c.classList.toggle("is-active", ativo);
+        c.setAttribute("aria-selected", String(ativo));
+      });
+      panels.forEach(function (p) {
+        p.classList.toggle("is-active", p.dataset.panel === nome);
+      });
+    };
+
+    cats.forEach(function (c) {
+      // hover basta no desktop; clique cobre toque e teclado
+      c.addEventListener("mouseenter", function () { showCat(c.dataset.cat); });
+      c.addEventListener("click", function (e) { e.preventDefault(); showCat(c.dataset.cat); });
+      c.addEventListener("focus", function () { showCat(c.dataset.cat); });
+    });
+
+    // ao fechar, volta para a primeira categoria
+    mega.addEventListener("mouseleave", function () { showCat("solucoes"); });
+  }
+
   /* ---------- Header com sombra ao rolar ---------- */
   const header = document.querySelector(".header");
   const onScroll = function () {

@@ -32,13 +32,109 @@
               Soluções
               <svg class="nav__caret" width="11" height="11" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
-            <div class="nav__dropdown" id="menu-solucoes" role="menu">
-              <a href="solucoes/abertura-de-empresa.html" role="menuitem">Abertura de Empresa</a>
-              <a href="solucoes/auditoria-contabil.html" role="menuitem">Auditoria Contábil</a>
-              <a href="solucoes/consultoria-tributaria.html" role="menuitem">Consultoria Tributária</a>
-              <a href="solucoes/contabilidade-consultiva.html" role="menuitem">Contabilidade Consultiva</a>
-              <a href="solucoes/gestao-de-folha-de-pagamento.html" role="menuitem">Gestão de Folha de Pagamento</a>
-              <a href="solucoes/gestao-financeira.html" role="menuitem">Gestão Financeira</a>
+
+            <div class="mega" id="menu-solucoes">
+              <div class="mega__inner">
+                <div class="mega__rail" role="tablist" aria-label="Categorias">
+                  <p class="mega__rail-title">Categorias</p>
+                  <button type="button" class="mega__cat is-active" role="tab" aria-selected="true" data-cat="solucoes">
+                    <span class="mega__cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg></span>
+                    <span><b>Por solução</b><small>O que fazemos por você.</small></span>
+                  </button>
+                  <button type="button" class="mega__cat" role="tab" aria-selected="false" data-cat="segmentos">
+                    <span class="mega__cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                    <span><b>Por segmento</b><small>Quem atendemos.</small></span>
+                  </button>
+                  <button type="button" class="mega__cat" role="tab" aria-selected="false" data-cat="planos">
+                    <span class="mega__cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></span>
+                    <span><b>Planos e preços</b><small>Conforme o seu faturamento.</small></span>
+                  </button>
+                </div>
+
+                <div class="mega__panels">
+                  <div class="mega__panel is-active" data-panel="solucoes" role="tabpanel">
+                    <div class="mega__cols">
+
+              <div class="mega__col">
+                <p class="mega__col-title">Rotina e conformidade</p>
+                <a class="mega__link" href="solucoes/contabilidade-consultiva.html">
+                  <span class="mega__link-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></span>
+                  <span><b>Contabilidade Consultiva</b><small>Um parceiro estratégico, com dados e eficiência.</small></span>
+                </a>
+                <a class="mega__link" href="solucoes/gestao-de-folha-de-pagamento.html">
+                  <span class="mega__link-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                  <span><b>Gestão de Folha de Pagamento</b><small>Obrigações trabalhistas com risco minimizado.</small></span>
+                </a>
+                <a class="mega__link" href="solucoes/gestao-financeira.html">
+                  <span class="mega__link-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg></span>
+                  <span><b>Gestão Financeira</b><small>Menos burocracia, mais tempo para empreender.</small></span>
+                </a>
+              </div>
+
+              <div class="mega__col">
+                <p class="mega__col-title">Abertura e estratégia</p>
+                <a class="mega__link" href="solucoes/abertura-de-empresa.html">
+                  <span class="mega__link-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></span>
+                  <span><b>Abertura de Empresa</b><small>Seu CNPJ em poucos dias, sem burocracia.</small></span>
+                </a>
+                <a class="mega__link" href="solucoes/consultoria-tributaria.html">
+                  <span class="mega__link-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>
+                  <span><b>Consultoria Tributária</b><small>Análise assertiva e atenta à legislação.</small></span>
+                </a>
+                <a class="mega__link" href="solucoes/auditoria-contabil.html">
+                  <span class="mega__link-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 11 2 2 4-4"/><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+                  <span><b>Auditoria Contábil</b><small>Revisão técnica das suas demonstrações.</small></span>
+                </a>
+              </div>
+                    </div>
+                    <div class="mega__foot">
+                      <a class="mega__cta" href="#solucoes">Ver todas as soluções <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                      <a class="mega__cta" href="#contato">Falar com um especialista <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                    </div>
+                  </div>
+
+                  <div class="mega__panel" data-panel="segmentos" role="tabpanel">
+                    <div class="mega__chips">
+                      <a class="mega__chip" href="#conta-pj">Médico</a>
+                      <a class="mega__chip" href="#conta-pj">Dentista</a>
+                      <a class="mega__chip" href="#conta-pj">Arquiteto</a>
+                      <a class="mega__chip" href="#conta-pj">Advogado</a>
+                      <a class="mega__chip" href="#conta-pj">Psicólogo</a>
+                      <a class="mega__chip" href="#conta-pj">Publicitário</a>
+                      <a class="mega__chip" href="#conta-pj">Técnico</a>
+                      <a class="mega__chip" href="#conta-pj">Consultor</a>
+                      <a class="mega__chip" href="#conta-pj">Representante comercial</a>
+                      <a class="mega__chip" href="#conta-pj">Lojista</a>
+                      <a class="mega__chip" href="#conta-pj">Varejista</a>
+                      <a class="mega__chip" href="#conta-pj">Infoprodutor</a>
+                    </div>
+                    <div class="mega__foot">
+                      <a class="mega__cta" href="#contato">Não encontrou o seu segmento? Fale conosco <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                    </div>
+                  </div>
+
+                  <div class="mega__panel" data-panel="planos" role="tabpanel">
+                    <div class="mega__plans">
+                      <a class="mega__plan" href="planos.html">
+                        <b>Plano Básico</b><i>R$ 249<small style="display:inline;color:var(--ink-soft);font-size:.75rem">/mês</small></i>
+                        <small>Faturamento até R$ 25.000/mês</small>
+                      </a>
+                      <a class="mega__plan" href="planos.html">
+                        <b>Plano Intermediário</b><i>R$ 389<small style="display:inline;color:var(--ink-soft);font-size:.75rem">/mês</small></i>
+                        <small>Faturamento até R$ 50.000/mês</small>
+                      </a>
+                      <a class="mega__plan" href="planos.html">
+                        <b>Plano Avançado</b><i>R$ 869<small style="display:inline;color:var(--ink-soft);font-size:.75rem">/mês</small></i>
+                        <small>Faturamento até R$ 150.000/mês</small>
+                      </a>
+                    </div>
+                    <div class="mega__foot">
+                      <a class="mega__cta" href="planos.html">Ver todos os planos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                      <a class="mega__cta" href="#calculadora">Simular a minha receita <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </li>
           <li><a href="planos.html" class="nav__link">Planos</a></li>
@@ -79,7 +175,104 @@
         </div>
 
         <div class="hero__visual" aria-hidden="true">
-          <img src="assets/Group 4.png" alt="" class="hero__vector" />
+          <img src="assets/hero-righ-section.png" alt="" class="hero__vector" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== COMPARATIVO ===================== -->
+    <section class="compare section" id="comparativo">
+      <div class="container">
+        <header class="section__head section__head--center">
+          <span class="eyebrow">Comparativo</span>
+          <h2 class="section__title compare__title">
+            Contabilidade digital <em>ou</em> contabilidade tradicional
+          </h2>
+          <p class="compare__lead">
+            A diferença não está no valor da mensalidade, mas no que ela devolve para o seu negócio.
+          </p>
+        </header>
+
+        <div class="compare__grid">
+          <article class="ccard ccard--old">
+            <header class="ccard__head">
+              <p class="ccard__tag">Modelo tradicional</p>
+              <h3 class="ccard__title">Você <strong>paga</strong><br />para cumprir obrigações</h3>
+            </header>
+            <ul class="ccard__list">
+              <li>
+                <span class="ccard__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span>
+                <span class="ccard__item"><b>Atendimento</b>Contato pontual, concentrado na entrega de guias</span>
+              </li>
+              <li>
+                <span class="ccard__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span>
+                <span class="ccard__item"><b>Rotina</b>Papel, deslocamento até o escritório e retrabalho</span>
+              </li>
+              <li>
+                <span class="ccard__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span>
+                <span class="ccard__item"><b>Decisão</b>Relatórios que chegam depois que a escolha já foi feita</span>
+              </li>
+              <li>
+                <span class="ccard__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span>
+                <span class="ccard__item"><b>Custo</b>Serviços avulsos cobrados à parte, sem previsibilidade</span>
+              </li>
+              <li>
+                <span class="ccard__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span>
+                <span class="ccard__item"><b>Resultado</b>O problema aparece quando já virou prejuízo</span>
+              </li>
+            </ul>
+          </article>
+
+          <span class="compare__vs" aria-hidden="true">vs</span>
+
+          <article class="ccard ccard--new">
+            <header class="ccard__head">
+              <p class="ccard__tag">Com a Automatize</p>
+              <h3 class="ccard__title">Você <strong>investe</strong><br />para decidir melhor</h3>
+            </header>
+            <ul class="ccard__list">
+              <li>
+                <span class="ccard__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <span class="ccard__item"><b>Atendimento</b>Um especialista consultivo acompanhando o seu negócio</span>
+              </li>
+              <li>
+                <span class="ccard__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <span class="ccard__item"><b>Rotina</b>Tudo digital: sem burocracia e sem sair do lugar</span>
+              </li>
+              <li>
+                <span class="ccard__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <span class="ccard__item"><b>Decisão</b>Dados estratégicos e diagnósticos precisos no tempo certo</span>
+              </li>
+              <li>
+                <span class="ccard__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <span class="ccard__item"><b>Custo</b>Mensalidade previsível, conforme o seu faturamento</span>
+              </li>
+              <li>
+                <span class="ccard__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <span class="ccard__item"><b>Resultado</b>Agilidade, transparência e redução de custos</span>
+              </li>
+            </ul>
+            <p class="ccard__note">
+              A partir de <strong>R$ 249/mês</strong>, de acordo com o seu faturamento — e sem custos extras na abertura.
+            </p>
+          </article>
+        </div>
+
+        <div class="compare__foot">
+          <div class="compare__foot-copy">
+            <p>
+              Não se trata de <b>pagar menos</b> pela contabilidade, e sim de a contabilidade
+              fazer o seu negócio <b>custar menos</b>.
+            </p>
+            <div class="compare__actions">
+              <a href="planos.html" class="btn btn--light">Ver planos e preços</a>
+              <a href="#calculadora" class="btn btn--outline">Simular quanto sobra</a>
+            </div>
+          </div>
+
+          <figure class="compare__foot-art" aria-hidden="true">
+            <img src="assets/art.png" alt="" width="2036" height="1068" loading="lazy" />
+          </figure>
         </div>
       </div>
     </section>
@@ -547,7 +740,7 @@
 
     <div class="footer__bottom">
       <div class="container footer__bottom-inner">
-        <span>© 2021 Automatize — Todos os Direitos Reservados. Desenvolvido por ThinkD Marketing Digital.</span>
+        <span>© 2026 Automatize</span>
         <span class="footer__badge">Proteção de Dados · LGPD</span>
       </div>
     </div>

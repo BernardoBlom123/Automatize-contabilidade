@@ -6,6 +6,10 @@ skills-lock.json
 # Dependências
 node_modules/
 
+# Fontes pesadas de arte, já substituídas pelas versões otimizadas usadas no site.
+# (art.svg tem 32 MB por embutir um PNG de 4096px em base64 — use art.png)
+assets/art.svg
+
 # Sistema operacional / editores
 Thumbs.db
 ehthumbs.db
